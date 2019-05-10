@@ -1,4 +1,4 @@
-package org.seongjong.springweb;
+package main.java.org.seongjong.springweb;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,24 +7,23 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+@Repository("memberDao")
+public class MemberDaoImplUsingSpringJdbc implements MemberDao {
 
-@Repository("articleDao")
-public class articleDaoImplUsingSpringJdbc implements articleDao {
+	static final String INSERT = "INSERT member(email, password, name) VALUES(?, sha2(?,256), ?)";
 
-	static final String INSERT = "INSERT article(email, password, name) VALUES(?, sha2(?,256), ?)";
+	static final String SELECT_ALL = "SELECT memberId, email, name, left(cdate,19) cdate FROM member ORDER BY memberId desc LIMIT ?,?";
 
-	static final String SELECT_ALL = "SELECT articleId, email, name, left(cdate,19) cdate FROM article ORDER BY articleId desc LIMIT ?,?";
-
-	static final String COUNT_ALL = "SELECT count(articleId) count FROM article";
+	static final String COUNT_ALL = "SELECT count(memberId) count FROM member";
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
-	final RowMapper<article> articleRowMapper = new BeanPropertyRowMapper<>(
-										article.class);
+	final RowMapper<Member> memberRowMapper = new BeanPropertyRowMapper<>(
+										Member.class);
 
 	@Override
-	public article selectByEmail(String email) {
+	public Member selectByEmail(String email) {
 		// TODO selectByEmail() 메서드 구현
 		return null;
 	}
@@ -33,13 +32,13 @@ public class articleDaoImplUsingSpringJdbc implements articleDao {
 	 * p.201 [리스트 8.12]의 insert() 메서드 수정
 	 */
 	@Override
-	public void insert(article article) {
-		jdbcTemplate.update(INSERT, article.getEmail(), article.getPassword(),
-											article.getName());
+	public void insert(Member member) {
+		jdbcTemplate.update(INSERT, member.getEmail(), member.getPassword(),
+											member.getName());
 	}
 
 	@Override
-	public void update(article article) {
+	public void update(Member member) {
 		// TODO update() 메서드 구현
 	}
 
@@ -47,8 +46,8 @@ public class articleDaoImplUsingSpringJdbc implements articleDao {
 	 * p.195 [리스트 8.9] selectAll() 메서드 수정
 	 */
 	@Override
-	public List<article> selectAll(int offset, int count) {
-		return jdbcTemplate.query(SELECT_ALL, articleRowMapper, offset, count);
+	public List<Member> selectAll(int offset, int count) {
+		return jdbcTemplate.query(SELECT_ALL, memberRowMapper, offset, count);
 	}
 
 	@Override

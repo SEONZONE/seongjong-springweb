@@ -1,28 +1,31 @@
-package org.seongjong.springweb;
+package main.java.org.seongjong.springweb;
 import java.util.List;
 
 
-public interface articleDao {
+
+
+
+public interface MemberDao {
 
 	/**
 	 * 이메일로 회원 정보 가져옴
 	 */
-	article selectByEmail(String email);
+	Member selectByEmail(String email);
 
 	/**
 	 * 회원정보 저장
 	 */
-	void insert(article article);
+	void insert(Member member);
 
 	/**
 	 * 회원정보 수정
 	 */
-	void update(article article);
+	void update(Member member);
 
 	/**
 	 * 회원 목록
 	 */
-	List<article> selectAll(int offset, int count);
+	List<Member> selectAll(int offset, int count);
 	
 	/**
 	 * 회원 수

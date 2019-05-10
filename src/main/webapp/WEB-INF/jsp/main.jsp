@@ -13,7 +13,7 @@ p.291 [리스트 11.18] main 화면
 		<a href="./app/register/step1">[회원 가입]</a>
 	</p>
 	<p>
-		<a href="./app/articles">[회원 목록]</a>
+		<a href="./app/members">[회원 목록]</a>
 	</p>
 </body>
 </head>

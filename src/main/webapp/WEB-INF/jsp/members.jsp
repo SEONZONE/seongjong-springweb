@@ -10,7 +10,7 @@
 </head>
 <body>
 	<p>전체 ${totalCount }건</p>
-	<form action="./app/articles">
+	<form action="./app/members">
 		<input type="number" name="page" value="${param.page }" placeholder="페이지"
 			min="1" max="${totalCount / 100 + 1 }" step="1" style="width: 50px;">
 		<button type="submit">조회</button>
@@ -25,12 +25,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="article" items="${articles}">
+			<c:forEach var="member" items="${members}">
 				<tr>
-					<td>${article.articleId }</td>
-					<td>${article.email }</td>
-					<td>${article.name }</td>
-					<td>${article.cdate }</td>
+					<td>${member.memberId }</td>
+					<td>${member.email }</td>
+					<td>${member.name }</td>
+					<td>${member.cdate }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
