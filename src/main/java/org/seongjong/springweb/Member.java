@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package org.seongjong.springweb;
+=======
+package main.java.org.seongjong.springweb;
+>>>>>>> 2cb12a72b6df6c304aabda486e64cba40d5935f3
 public class Member {
 	String memberId; // 아이디
 	String email; // 이메일

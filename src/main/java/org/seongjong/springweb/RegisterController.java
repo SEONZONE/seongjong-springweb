@@ -1,4 +1,4 @@
-package org.seongjong.springweb;
+package main.java.org.seongjong.springweb;
 
 import java.util.List;
 

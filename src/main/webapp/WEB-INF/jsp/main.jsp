@@ -33,7 +33,11 @@
 		<a href="./app/members">[회원 목록]</a>
 	</p>
 	<p>
+<<<<<<< HEAD
 		<a href="./app/article/list">[게시판]</a>
+=======
+		<a href="./app/members">[회원 목록]</a>
+>>>>>>> 2cb12a72b6df6c304aabda486e64cba40d5935f3
 	</p>
 </body>
 </head>
