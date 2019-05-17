@@ -1,6 +1,6 @@
 package org.seongjong.springweb;
-public class article {
-	String articleId; // 아이디
+public class Member {
+	String memberId; // 아이디
 	String email; // 이메일
 	String password; // 비밀번호
 	String name; // 이름
@@ -9,7 +9,7 @@ public class article {
 	/**
 	 * Default Constructor
 	 */
-	public article() {
+	public Member() {
 	}
 
 	/**
@@ -19,18 +19,18 @@ public class article {
 	 * @param password 비밀번호
 	 * @param name     이름
 	 */
-	public article(String email, String password, String name) {
+	public Member(String email, String password, String name) {
 		this.email = email;
 		this.password = password;
 		this.name = name;
 	}
 
-	public String getarticleId() {
-		return articleId;
+	public String getMemberId() {
+		return memberId;
 	}
 
-	public void setarticleId(String articleId) {
-		this.articleId = articleId;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 
 	public String getEmail() {
@@ -67,7 +67,7 @@ public class article {
 
 	@Override
 	public String toString() {
-		return "article [articleId=" + articleId + ", email=" + email + ", name="
+		return "Member [memberId=" + memberId + ", email=" + email + ", name="
 				+ name + ", cdate=" + cdate + "]";
 	}
 }

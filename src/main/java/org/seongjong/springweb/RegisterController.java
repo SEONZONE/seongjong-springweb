@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+/**
+ * 회원가입 컨트롤러
+ * 
+ * @author Jacob
+ */
 @Controller
 public class RegisterController {
 
 	@Autowired
-	articleDao articleDao;
+	MemberDao memberDao;
 
 	static final Logger logger = LogManager.getLogger();
 
@@ -53,19 +57,19 @@ public class RegisterController {
 	 * p.282 [리스트 11.11] handleStep3()
 	 */
 	@PostMapping("/register/step3")
-	public String handleStep3(article article) {
+	public String handleStep3(Member member) {
 		try {
-			articleDao.insert(article);
-			logger.debug("회원 정보를 저장했습니다. {}", article);
+			memberDao.insert(member);
+			logger.debug("회원 정보를 저장했습니다. {}", member);
 			return "register/step3";
 		} catch (DuplicateKeyException e) {
-			logger.debug("이미 존재하는 이메일입니다. email = {}", article.getEmail());
+			logger.debug("이미 존재하는 이메일입니다. email = {}", member.getEmail());
 			return "register/step2";
 		}
 	}
 
-	@GetMapping("/articles")
-	public String articles(
+	@GetMapping("/members")
+	public String members(
 			@RequestParam(value = "page", defaultValue = "1") int page,
 			Model model) {
 
@@ -74,12 +78,12 @@ public class RegisterController {
 		// 시작점
 		int offset = (page - 1) * COUNT;
 
-		List<article> articleList = articleDao.selectAll(offset, COUNT);
+		List<Member> memberList = memberDao.selectAll(offset, COUNT);
 
-		int totalCount = articleDao.countAll();
+		int totalCount = memberDao.countAll();
 
 		model.addAttribute("totalCount", totalCount);
-		model.addAttribute("articles", articleList);
-		return "articles";
+		model.addAttribute("members", memberList);
+		return "members";
 	}
 }
