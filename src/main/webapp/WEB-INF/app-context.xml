@@ -16,6 +16,14 @@
 
 	<mvc:annotation-driven />
 	<context:component-scan base-package="org.seongjong" />
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/member/**" />
+			<mvc:mapping path="/article/add*" />
+			<bean class="org.seongjong.springweb.AuthCheckInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
