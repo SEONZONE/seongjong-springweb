@@ -67,4 +67,18 @@ public class ArticleController {
 		articleDao.addArticle(article);
 		return "redirect:/app/article/list";
 	}
+	
+	@PostMapping("/article/modify")
+	public String modifyArticle(@SessionAttribute("MEMEBER")Member member)
+	{
+		return "redirect:/app/article/list";
+	
+	}
+	
+	@GetMapping("/article/delete")
+	public String deleteArticle(@SessionAttribute("MEMBER")Member member)
+	{
+		return "redirect:/app/article/list";
+	}
+	
 }
