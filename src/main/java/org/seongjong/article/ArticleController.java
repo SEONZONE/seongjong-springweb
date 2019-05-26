@@ -18,6 +18,7 @@ public class ArticleController {
 
 	@Autowired
 	ArticleDao articleDao;
+	
 
 	/**
 	 * 글 목록
@@ -47,15 +48,8 @@ public class ArticleController {
 		model.addAttribute("article", article);
 	}
 
-	/**
-	 * 글 등록 화면
-	 */
-	@GetMapping("/article/addForm")
-	public String articleAddForm(@SessionAttribute("MEMBER")Member member)
-	{
-			return "redirect:/app/loginForm";
-	}
 
+	
 	/**
 	 * 글 등록
 	 */
@@ -69,15 +63,22 @@ public class ArticleController {
 	}
 	
 	@PostMapping("/article/modify")
-	public String modifyArticle(@SessionAttribute("MEMEBER")Member member)
+	public String articleModify(Article article,
+			@SessionAttribute("MEMBER")Member member)
 	{
+		article.setUserId(member.getMemberId());
+		article.setName(member.getName());
+		articleDao.updateArticle(article);
 		return "redirect:/app/article/list";
 	
 	}
 	
 	@GetMapping("/article/delete")
-	public String deleteArticle(@SessionAttribute("MEMBER")Member member)
+	public String deleteArticle(Article article,
+			@RequestParam("articleId") String articleId,
+			@SessionAttribute("MEMBER")Member member)
 	{
+		articleDao.deleteArticle(articleId);
 		return "redirect:/app/article/list";
 	}
 	

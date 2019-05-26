@@ -12,14 +12,14 @@
 	<p>
 		<a href="./app/article/list">글 목록</a>
 	</p>
-	
-	<p>
-	  <a href="./app/article/modify">수정</a>
-	</p>
-	
-	<p>
-	  <a href="./app/article/delete">삭제</a>
-	</p>
+	<c:choose>
+	<c:when test="${sessionScope.MEMBER.memberId==article.userId }">
+		 
+		<a href="./app/article/modify?articleId=${article.articleId }">수정</a>
+       <a href="./app/article/delete?articleId=${article.articleId }">삭제</a>
+       </c:when>
+       </c:choose>
+       
 	 
 	<hr />
 	<p>

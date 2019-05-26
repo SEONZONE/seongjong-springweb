@@ -4,7 +4,16 @@ public class Member {
 	String email; // 이메일
 	String password; // 비밀번호
 	String name; // 이름
-	String cdate; // 가입일
+	String cdate; // 가입일\
+	String userName;
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	/**
 	 * Default Constructor
@@ -67,7 +76,7 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [memberId=" + memberId + ", email=" + email + ", name="
-				+ name + ", cdate=" + cdate + "]";
+		return "Member [memberId=" + memberId + ", email=" + email + ", password=" + password + ", name=" + name
+				+ ", cdate=" + cdate + ", userName=" + userName + "]";
 	}
 }

@@ -7,11 +7,10 @@
 </head>
 <body>
    <%@ include file="/WEB-INF/jsp/header.jsp"%>
-	<h2>글 등록</h2>
-	<p>
-		<a href="./app/article/list">글 목록</a>
-	</p>
-	<form action="./app/article/add" method="post">
+	<h2>수정</h2>
+
+	<form action="./app/article/modify" method="post">
+	    
 		<p>제목 :</p>
 		<p>
 			<input type="text" name="title" maxlength="100" style="width: 100%;"
@@ -25,5 +24,6 @@
 			<button type="submit">등록</button>
 		</p>
 	</form>
+	
 </body>
 </html>
