@@ -1,9 +1,7 @@
 package org.seongjong.article;
 
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
-
 import org.seongjong.springweb.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,16 +60,22 @@ public class ArticleController {
 		return "redirect:/app/article/list";
 	}
 	
-	@PostMapping("/article/modify")
-	public String articleModify(Article article,
-			@SessionAttribute("MEMBER")Member member)
-	{
-		article.setUserId(member.getMemberId());
-		article.setName(member.getName());
-		articleDao.updateArticle(article);
-		return "redirect:/app/article/list";
+	@GetMapping("/article/updateForm")
+	public String articleUpdateForm(@RequestParam("articleId") String articleId,
+			@SessionAttribute("MEMBER") Member member, Model model) {
+		Article article = articleDao.getArticle(articleId);
+		model.addAttribute("article", article);
+		return "article/updateForm";
+}
 	
-	}
+	@PostMapping("/article/update")
+	public String articleUpdate(Article article) {
+		articleDao.updateArticle(article);
+		return "redirect:/app/article/view?articleId=" + article.getArticleId();
+}
+	
+
+
 	
 	@GetMapping("/article/delete")
 	public String deleteArticle(Article article,

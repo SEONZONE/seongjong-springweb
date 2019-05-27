@@ -19,7 +19,7 @@ public class ArticleDao {
 
 	static final String ADD_ARTICLE = "insert article(title,content,userId,name) values(?,?,?,?)";
 	
-	static final String UPDATE_ARTICLE = "UPDATE article set title=?, content=? where articleId=?";
+	static final String UPDATE_ARTICLE = "update article set title=?, content=? where articleId=?";
 	
 	static final String DELETE_ARTICLE = "DELETE from article where articleId=?";
 

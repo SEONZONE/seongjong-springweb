@@ -15,7 +15,7 @@
 	<c:choose>
 	<c:when test="${sessionScope.MEMBER.memberId==article.userId }">
 		 
-		<a href="./app/article/modify?articleId=${article.articleId }">수정</a>
+		<a href="./app/article/updateForm?articleId=${article.articleId }">수정</a>
        <a href="./app/article/delete?articleId=${article.articleId }">삭제</a>
        </c:when>
        </c:choose>
