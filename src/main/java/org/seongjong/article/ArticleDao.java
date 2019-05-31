@@ -23,6 +23,7 @@ public class ArticleDao {
 	static final String UPDATE_ARTICLE = "update article set title=?, content=? where (articleId, userId) = (?,?)";
 
 	static final String DELETE_ARTICLE = "delete from article where (articleId, userId) = (?,?)";
+	
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
