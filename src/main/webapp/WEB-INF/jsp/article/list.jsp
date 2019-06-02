@@ -12,27 +12,24 @@ table {
 	border-bottom: 1px solid gray;
 	width: 100%;
 }
-
 th, td {
 	padding: 5px 0;
 }
-
 th {
 	border-bottom: 1px solid gray;
 }
 </style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/jsp/header.jsp"%>
+    <%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<h2>글 목록</h2>
 	<p>
 		<a href="./app/article/addForm">글쓰기</a>
 	</p>
 	<p>전체 ${totalCount }건</p>
 	<form action="./app/article/list">
-		<input type="number" name="page" value="${param.page }"
-			placeholder="페이지" min="1" max="${totalCount / 100 + 1 }" step="1"
-			style="width: 50px;">
+		<input type="number" name="page" value="${param.page }" placeholder="페이지"
+			min="1" max="${totalCount / 100 + 1 }" step="1" style="width: 50px;">
 		<button type="submit">조회</button>
 	</form>
 	<table>
@@ -47,10 +44,8 @@ th {
 		<tbody>
 			<c:forEach var="article" items="${articleList}">
 				<tr>
-					<td><a
-						href="./app/article/view?articleId=${article.articleId }">${article.articleId }</a></td>
-					<td><a
-						href="./app/article/view?articleId=${article.articleId }">${article.title }</a></td>
+					<td><a href="./app/article/view?articleId=${article.articleId }">${article.articleId }</a></td>
+					<td><a href="./app/article/view?articleId=${article.articleId }">${article.title }</a></td>
 					<td>${article.name }</td>
 					<td>${article.cdate }</td>
 				</tr>

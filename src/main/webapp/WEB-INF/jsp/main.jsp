@@ -39,9 +39,6 @@
 	<p>
 
 		<a href="./app/article/list">[게시판]</a>
-
-
-
 	</p>
 </body>
 </head>
