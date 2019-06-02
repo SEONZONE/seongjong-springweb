@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 package org.seongjong.springweb;
 
-=======
-package main.java.org.seongjong.springweb;
->>>>>>> 2cb12a72b6df6c304aabda486e64cba40d5935f3
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-<<<<<<< HEAD
 /**
  * SpringJdbc를 사용해서 구현
  * 
@@ -29,58 +24,36 @@ public class MemberDao {
 
 	static final String SELECT_BY_LOGIN = "SELECT memberId, email, password, name FROM member WHERE (email,password) = (?,sha2(?,256))";
 
+	static final String CHANGE_PASSWORD = "UPDATE member SET password=sha2(?,256) WHERE (memberId, password)=(?, sha2(?,256))";
+
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
 	final RowMapper<Member> memberRowMapper = new BeanPropertyRowMapper<>(
 			Member.class);
-=======
-
-
-
-public interface MemberDao {
-
-	/**
-	 * 이메일로 회원 정보 가져옴
-	 */
-	Member selectByEmail(String email);
->>>>>>> 2cb12a72b6df6c304aabda486e64cba40d5935f3
 
 	/**
 	 * p.201 [리스트 8.12]의 insert() 메서드 수정. 회원 등록
 	 */
-<<<<<<< HEAD
 	public void insert(Member member) {
 		jdbcTemplate.update(INSERT, member.getEmail(), member.getPassword(),
 				member.getName());
 	}
-=======
-	void insert(Member member);
->>>>>>> 2cb12a72b6df6c304aabda486e64cba40d5935f3
 
 	/**
 	 * p.195 [리스트 8.9] selectAll() 메서드 수정. 회원 목록
 	 */
-<<<<<<< HEAD
 	public List<Member> selectAll(int offset, int count) {
 		return jdbcTemplate.query(SELECT_ALL, memberRowMapper, offset, count);
 	}
-=======
-	void update(Member member);
->>>>>>> 2cb12a72b6df6c304aabda486e64cba40d5935f3
 
 	/**
 	 * 회원 수
 	 */
-<<<<<<< HEAD
 	public int countAll() {
 		return jdbcTemplate.queryForObject(COUNT_ALL, Integer.class);
 	}
 
-=======
-	List<Member> selectAll(int offset, int count);
-	
->>>>>>> 2cb12a72b6df6c304aabda486e64cba40d5935f3
 	/**
 	 * 이메일과 비밀번호로 멤버 가져오기. 로그인 할 때 사용한다.
 	 */
@@ -88,4 +61,10 @@ public interface MemberDao {
 		return jdbcTemplate.queryForObject(SELECT_BY_LOGIN, memberRowMapper,
 				email, password);
 	}
+	
+	public int changePassword(String memberId, String currentPassword,
+			String newPassword) {
+		return jdbcTemplate.update(CHANGE_PASSWORD, newPassword, memberId,
+				currentPassword);
+}
 }

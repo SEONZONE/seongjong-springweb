@@ -16,7 +16,8 @@
 				value="${param.email }" required />
 		</p>
 		<p>
-			<label>비밀번호 : </label><br /> <input type="password" name="password" required />
+			<label>비밀번호 : </label><br /> <input type="password" name="password"
+				required />
 		</p>
 		<p>
 			<button type="submit">로그인</button>

@@ -10,11 +10,15 @@
 	<p>환영합니다.</p>
 	<!-- 로그인 여부에 따라 분기 -->
 	<c:choose>
-	
-		<c:when test="${!empty sessionScope.MEMBER }"> <!--  sessionScope가 존재하면 when 은 if 문 과 같다 session 영역에 로그인이 안되면 로그인 화면으로 빠진다..  -->
+
+		<c:when test="${!empty sessionScope.MEMBER }">
+			<!--  sessionScope가 존재하면 when 은 if 문 과 같다 session 영역에 로그인이 안되면 로그인 화면으로 빠진다..  -->
 			<!-- 로그인 했을 경우 -->
-			<p>memberId: ${MEMBER.memberId }, email: ${MEMBER.email }, name: <!-- 밑에서부터 찾아 올라온다 . when 문은 한번에 찾는다. 교수님은 session attribute 는 when 으로 하는것을 선호 한다.  -->
-				${MEMBER.name }</p>
+			<p>
+				memberId: ${MEMBER.memberId }, email: ${MEMBER.email }, name:
+				<!-- 밑에서부터 찾아 올라온다 . when 문은 한번에 찾는다. 교수님은 session attribute 는 when 으로 하는것을 선호 한다.  -->
+				${MEMBER.name }
+			</p>
 			<p>
 				<a href="./app/logout">[로그아웃]</a>
 			</p>
@@ -33,11 +37,11 @@
 		<a href="./app/members">[회원 목록]</a>
 	</p>
 	<p>
-<<<<<<< HEAD
+
 		<a href="./app/article/list">[게시판]</a>
-=======
-		<a href="./app/members">[회원 목록]</a>
->>>>>>> 2cb12a72b6df6c304aabda486e64cba40d5935f3
+
+
+
 	</p>
 </body>
 </head>
