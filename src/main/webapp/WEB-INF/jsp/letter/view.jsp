@@ -1,49 +1,38 @@
-<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>-->
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
-<!-- 
-회원 목록
--->
 <html>
 <head>
 <base href="${pageContext.request.contextPath }/" />
-<title>글 정보</title>
+<title>게시판</title>
+<script type="text/javascript">
+	function confirmDelete() {
+		if (confirm("삭제하시겠습니까?"))
+			return true;
+		else
+			return false;
+	}
+</script>
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-	<table>
-		<tbody>
-			<tr>
-				<td>편지 번호</td>
-				<td>${LETTER.letterId }</td>
-			</tr>
-			<tr>
-				<td>편지 제목</td>
-				<td>${LETTER.title }</td>
-			</tr>
-			<tr>
-				<td>편지 내용</td>
-				<td><p>${LETTER.getContentHtml() }</p></td>
-			</tr>
-			<tr>
-				<td>보낸 시람</td>
-				<td>${LETTER.senderName }</td>
-			</tr>
-			<tr>
-				<td>받는 시람</td>
-				<td>${LETTER.receiverName}</td>
-			</tr>
-			<tr>
-				<td>작성 시간</td>
-				<td>${LETTER.cdate }</td>
-			</tr>
-		</tbody>
-	</table>
-	<c:if
-		test="${LETTER.senderId==sessionScope.MEMBER.memberId || LETTER.receiverId==sessionScope.MEMBER.memberId}">
-		<a href="./app/letter/delete?letterId=${LETTER.letterId}">삭제하기</a>
-	</c:if>
+	<h2>편지 보기</h2>
 	<p>
-		<button type="submit" onclick="history.back()">[뒤로 돌아가기]</button>
+		<a href="./app/members">회원목록</a>
+		<c:if test="${letter.receiverId == sessionScope.MEMBER.memberId }">
+			<a href="./app/letter/delete?letterId=${letter.letterId }"
+onclick="return confirmDelete();">글삭제</a>
+		</c:if>
 	</p>
+	<hr />
+	<p>
+		<span>${letter.letterId }</span> | <span style="font-weight: bold;">${letter.title }</span>
+	</p>
+	<p>
+		<span>${letter.cdate }</span> | <span>${letter.senderName }</span>
+	</p>
+	<hr />
+	<p>${letter.contentHtml }</p>
+	<hr />
 </body>
 </html>

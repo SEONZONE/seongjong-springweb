@@ -19,7 +19,7 @@ public class LetterController {
 	/**
 	 * 받은 목록
 	 */
-	@GetMapping("/letter/listReceived")
+	@GetMapping("/letter/receivelist")
 	public void listReceived(
 			@RequestParam(value = "page", defaultValue = "1") int page,
 			@SessionAttribute("MEMBER") Member member, Model model) {
@@ -39,7 +39,7 @@ public class LetterController {
 	/**
 	 * 보낸 목록
 	 */
-	@GetMapping("/letter/listSent")
+	@GetMapping("/letter/sendlist")
 	public void listSent(
 			@RequestParam(value = "page", defaultValue = "1") int page,
 			@SessionAttribute("MEMBER") Member member, Model model) {
@@ -54,6 +54,7 @@ public class LetterController {
 
 		model.addAttribute("letters", letters);
 		model.addAttribute("count", count);
+	
 	}
 
 	/**
@@ -77,7 +78,7 @@ public class LetterController {
 		letter.setSenderId(member.getMemberId());
 		letter.setSenderName(member.getName());
 		letterDao.addLetter(letter);
-		return "redirect:/app/letter/listSent";
+		return "redirect:/app/letter/sendlist";
 	}
 
 	/**
@@ -95,8 +96,8 @@ public class LetterController {
 			throw new RuntimeException("No Authority!");
 
 		if ("SENT".equals(mode))
-			return "redirect:/app/letter/listSent";
+			return "redirect:/app/letter/sendlist";
 		else
-			return "redirect:/app/letter/listReceived";
+			return "redirect:/app/letter/receivelist";
 	}
 }
