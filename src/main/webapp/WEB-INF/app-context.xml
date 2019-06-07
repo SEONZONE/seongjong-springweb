@@ -18,11 +18,11 @@
 	<context:component-scan base-package="org.seongjong" />
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/member/**" />
+			<mvc:mapping path="/member/*" />
 			<mvc:mapping path="/article/add*" />
 			<mvc:mapping path="/article/update*" />
 			<mvc:mapping path="/article/delete" />
-			<mvc:mapping path="/letter/**" />
+			<mvc:mapping path="/letter/*" />
 			<bean class="org.seongjong.springweb.AuthCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

@@ -46,7 +46,7 @@ th {
 				<tr>
 					<td><a href="./app/letter/view?letterId=${letter.letterId }">${letter.letterId }</a></td>
 					<td><a href="./app/letter/view?letterId=${letter.letterId }">${letter.title }</a></td>
-					<td><a href="./app/letter/delete?articleId=${letter.articleId }"
+					<td><a href="./app/letter/delete?letterId=${letter.letterId }"
 				onclick="return confirmDelete();">글삭제</a></td>
 					<td>${letter.senderName }</td>
 					<td>${letter.cdate }</td>
